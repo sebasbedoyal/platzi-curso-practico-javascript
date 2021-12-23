@@ -1,53 +1,96 @@
+// git@github.com:sebasbedoyal/platzi-curso-practico-javascript.git
+
 // Código del cuadrado
-console.group("Cuadrados");
-const ladoCuadrado = 5;
-console.log(`Los lados del cuadrado miden: ${ladoCuadrado} cm`);
+function perimetroCuadrado(lado){
+    return lado * 4; 
+}; 
 
-const perimetroCuadrado = ladoCuadrado * 4;
-console.log(`El perímetro del cuadrado es: ${perimetroCuadrado} cm`);
-
-const areaCuadrado = ladoCuadrado * ladoCuadrado;
-console.log(`El área del cuadrado es: ${areaCuadrado} cm2`);
-console.groupEnd();
+function areaCuadrado(lado){
+    return lado * lado; 
+}; 
 
 // Código del triángulo
-console.group("Triángulos");
-const ladoTriangulo1 = 6;
-const ladoTriangulo2 = 6;
-const baseTriangulo = 4;
-const alturaTriangulo = 5.5;
-console.log(`Los lados del triángulo miden: ${ladoTriangulo1} cm, ${ladoTriangulo2} cm, ${baseTriangulo} cm`);
-console.log(`La altura del triángulo es: ${alturaTriangulo} cm`);
+function perimetroTriangulo(lado1, lado2, base){
+    return Number(lado1) + Number(lado2) + Number(base);
+} 
 
-const perimetroTriangulo = ladoTriangulo1 + ladoTriangulo2 + baseTriangulo;
-console.log(`El perímetro del triángulo es: ${perimetroTriangulo} cm`);
-
-const areaTriangulo = (baseTriangulo * alturaTriangulo) / 2;
-console.log(`El área del triángulo es: ${areaTriangulo} cm2`);
-console.groupEnd();
+function areaTriangulo(base, altura){
+    return (Number(base) * Number(altura)) / 2;
+}
 
 // Código del círculo
-console.group("Círculos");
-
-// Radio
-const radioCirculo = 4;
-console.log(`El radio del círculo es: ${radioCirculo} cm`);
-
 // Diametro
-const diametroCirculo = radioCirculo * 2;
-console.log(`El diámetro del círculo es: ${diametroCirculo} cm`);
-
-// PI
-const PI = Math.PI;
-console.log(`El número PI es: ${PI}`);
+ function diametroCirculo(radio){
+    return radio * 2;
+ }
 
 // Circunferencia
-const perimetroCirculo = 2 * PI * radioCirculo;
-console.log(`La circunferencia del círculo es: ${perimetroCirculo} cm`);
+function perimetroCirculo(radio){ 
+    const diametro = diametroCirculo(radio);
+    return diametro * Math.PI;
+}
 
 // Área
-const areaCirculo = PI * (radioCirculo * radioCirculo);
-console.log(`El área del círculo es: ${areaCirculo} cm2`);
+function areaCirculo(radio){
+    return Math.PI * (radio * radio);
+}
 
+//Aquí interactuamos con el HTML
+//Cuadrado
+function calcularPerimetroCuadrado(){
+    const input = document.getElementById("InputCuadrado");
+    const value = input.value;
 
-console.groupEnd();
+    const perimetro = perimetroCuadrado(value);
+    alert(perimetro);
+};
+
+function calcularAreaCuadrado(){
+    const input = document.getElementById("InputCuadrado");
+    const value = input.value;
+
+    const perimetro = areaCuadrado(value);
+    alert(perimetro);
+};
+
+//Triangulo
+function calcularPerimetroTriangulo(){
+    const lado1 = document.getElementById("InputLado1");
+    const lado2 = document.getElementById("InputLado2");
+    const base = document.getElementById("InputLadoBase");
+
+    const valueLado1 = lado1.value;
+    const valueLado2 = lado2.value;
+    const valueLadoBase = base.value;
+
+    const perimetro = perimetroTriangulo(valueLado1, valueLado2, valueLadoBase);
+    alert(perimetro);
+};
+
+function calcularAreaTriangulo(){
+    const base = document.getElementById("InputLadoBase");
+    const altura = document.getElementById("InputAltura");
+
+    const valueLadoBase = base.value;
+    const valueAltura = altura.value;
+
+    const area = areaTriangulo(valueLadoBase, valueAltura);
+    alert(area);
+};
+
+//Circulo
+function calcularPerimetroCirculo(){
+    const input = document.getElementById("InputCirculo");
+    const value = input.value;
+
+    const perimetro = perimetroCirculo(value);
+    alert(perimetro);
+};
+
+function calcularAreaCirculo(){
+    const input = document.getElementById("InputCirculo");
+    const value = input.value;
+
+    const perimetro = areaCirculo(value);
+    alert(perimetro);
+};
